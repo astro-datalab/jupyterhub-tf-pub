@@ -1,0 +1,27 @@
+
+PS1=`whoami`"@datalab> "
+
+alias ls="ls -HFCs"
+
+export TERM=vt100
+
+function getlatest {
+    SOURCE=$HOME"/notebooks-latest/";
+    if [ "$1" == "" ]; then
+        STAMP=`date +%Y%m%d_%H%M%S`;
+        TARGET="notebooks_"$STAMP;
+    else
+        TARGET=$1;
+    fi
+
+    if [ ! -d "$TARGET" ]; then
+        mkdir -p $TARGET;
+    fi
+
+    cp -pria $SOURCE/* $TARGET;
+    echo "Copied "$SOURCE" to "$TARGET"/";
+}
+
+
+cat /etc/motd
+

@@ -1,0 +1,34 @@
+
+              Welcome to the NOIRLab Data Lab Notebook Server
+
+   The JupyterHub server provides a shell access to authenticated users
+to enable bulk transfer of files/data for use in notebooks, or to update
+example notebooks to the latest version using shell commands. It contains
+at least the following three directories:
+
+    notebooks/          User notebook directory
+    notebooks-latest/   Latest Data Lab notebooks (read-only access)
+    vospace/            A link to the user's VOSpace directory (experimental)
+
+Please consult notebooks-latest/_README.txt for brief information about the
+default notebooks provided with your account.  To get the latest copies of
+the default notebooks copied to your 'notebooks' directory, type
+
+        % getlatest     # this is defined in your .bashrc file
+
+Existing dir will be backed-up to 'notebooks_<timestamp>'.
+
+The shell provides the following commands which may be used to import
+external data or files:
+
+    scp                 Secure copy from remote host 
+    ssh                 Remote login program
+    rsync               Sync directories to/from remote host
+    sftp                Secure file transfer to/from remote host
+    git                 Git client
+    curl/wget           Network download clients
+
+You may pull-from or push-to a remote machine using these commands, but
+due to firewall  restrictions it is not possible to  upload or download
+directly to/from this machine.
+
