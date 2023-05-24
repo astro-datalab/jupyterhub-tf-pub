@@ -23,10 +23,8 @@ external data or files:
 
     scp                 Secure copy from remote host 
     ssh                 Remote login program
-    rsync               Sync directories to/from remote host
-    sftp                Secure file transfer to/from remote host
     git                 Git client
-    curl/wget           Network download clients
+    wget                Network download clients
 
 You may pull-from or push-to a remote machine using these commands, but
 due to firewall  restrictions it is not possible to  upload or download

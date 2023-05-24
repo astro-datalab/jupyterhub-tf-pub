@@ -6,7 +6,7 @@ alias ls="ls -HFCs"
 export TERM=vt100
 
 function getlatest {
-    SOURCE=$HOME"/notebooks-latest/";
+    SOURCE=$HOME"/notebooks-latest";
     if [ "$1" == "" ]; then
         STAMP=`date +%Y%m%d_%H%M%S`;
         TARGET="notebooks_"$STAMP;
