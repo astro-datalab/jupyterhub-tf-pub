@@ -12,7 +12,7 @@ mkdir /home/${NB_USER}/.datalab
 mkdir /home/${NB_USER}/.notebooks
 mkdir /home/${NB_USER}/jupyterhub-singleuser
 chmod 777 /home/${NB_USER}/.local
-ln -s /mnt/shared/notebook-latest /home/${NB_USER}/notebook-latest
+ln -s /mnt/shared/notebooks-latest /home/${NB_USER}/notebooks-latest
 echo ${UPSTREAM_TOKEN} > /home/${NB_USER}/.datalab/id_token.${NB_USER}
 
 read -r -d  '' config<<EOF
