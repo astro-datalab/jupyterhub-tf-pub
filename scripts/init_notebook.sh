@@ -7,12 +7,23 @@ NB_UID=$2
 UPSTREAM_TOKEN=$3
 
 #Create required files and directories
-mkdir /home/${NB_USER}/.local
-mkdir /home/${NB_USER}/.datalab
-mkdir /home/${NB_USER}/.notebooks
-mkdir /home/${NB_USER}/jupyterhub-singleuser
-chmod 777 /home/${NB_USER}/.local
-ln -shf /mnt/shared/notebooks-latest /home/${NB_USER}/notebooks-latest
+if [ ! -d "/home/${NB_USER}/.local" ]
+then
+  mkdir -p /home/${NB_USER}/.local
+  mkdir -p /home/${NB_USER}/.datalab
+  mkdir -p /home/${NB_USER}/.notebooks
+  mkdir -p /home/${NB_USER}/jupyterhub-singleuser
+  chmod 777 /home/${NB_USER}/.local
+fi
+
+# create symlink to notebooks-latest
+# N.B. the -fn arguments are important, as they remove the symlink if
+# already present. Without those arguments the symlink will be created
+# again inside the previous symlink and because this is run as root
+# the symlink will succeed and became are recursive symlink inside
+# /mnt/shared/notebooks-latest itself.
+ln -sfn /mnt/shared/notebooks-latest /home/${NB_USER}/notebooks-latest
+
 echo ${UPSTREAM_TOKEN} > /home/${NB_USER}/.datalab/id_token.${NB_USER}
 
 read -r -d  '' config<<EOF
