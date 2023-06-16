@@ -2,5 +2,5 @@
 
 ../deploy.sh \
    --name notebooks-latest \
-   --source git@github.com:astro-datalab/notebooks-latest.git \
+   --source https://github.com/astro-datalab/notebooks-latest.git \
    --target-dir /usr/src/notebooks-latest
