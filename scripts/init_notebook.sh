@@ -12,7 +12,6 @@ then
   mkdir -p /home/${NB_USER}/.local
   mkdir -p /home/${NB_USER}/.datalab
   mkdir -p /home/${NB_USER}/.notebooks
-  mkdir -p /home/${NB_USER}/jupyterhub-singleuser
   chmod 777 /home/${NB_USER}/.local
 fi
 
