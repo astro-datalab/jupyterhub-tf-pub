@@ -23,7 +23,7 @@ fi
 
 git clone https://github.com/astro-datalab/notebooks-latest.git "${NB_DIR}/notebooks-latest" || exit 1
 
-if [ ! -d "${NBDATA_DIR}" ]
+if [ ! -d "${NBDATA_DIR}" ] && [ 1 -eq 2 ]
 then
   mkdir "${NBDATA_DIR}"
 
