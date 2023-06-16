@@ -94,6 +94,9 @@ echo "Loading source from '${SOURCE}' into '${TARGET}' using temp directory '${T
 TIMESTAMP=`date "+%Y%m%d-%H%M%S"`
 TMP_TARGET=$(mktemp -d /tmp/$NAME-auto-"$TIMESTAMP"XXXX)
 
+# create the directory
+mkdir -p $TMP_TARGET
+
 # try to load from the repository
 echo "Trying to clone $SOURCE into $TMP_TARGET"
 cd "$TMP_TARGET"
@@ -110,11 +113,14 @@ rm -rf $TMP_TARGET/.git*
 ROLLBACK_DIR="$TMPDIR/$NAME-rollback"
 rm -rf $ROLLBACK_DIR
 echo "Moves current target directory to rollback"
-mv -v $TARGET $ROLLBACK_DIR
+mkdir -p $ROLLBACK_DIR
+set +e
+cp -pa $TARGET/* $ROLLBACK_DIR
+set -e
 
 # deploy the new directory
 echo "Deploying new directory"
-mv -v $TMP_TARGET $TARGET
+cp -pa $TMP_TARGET/* $TARGET
 
 # clean up temp directory
 echo "Cleaning up $TMPDIR directory"
