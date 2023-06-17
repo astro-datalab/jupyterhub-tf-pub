@@ -23,6 +23,15 @@ fi
 
 git clone https://github.com/astro-datalab/notebooks-latest.git "${NB_DIR}/notebooks-latest" || exit 1
 
+# if supporting repo not present get it from github
+if [ ! -d "$PUB_REPO" ]
+then
+  git clone --depth 1  https://github.com/astro-datalab/${PUB_REPO}.git
+fi
+
+# copy what's needed to the shared directory
+cp -pr ./${PUB_REPO}/scripts ${TGT_DIR}/
+
 if [ ! -d "${NBDATA_DIR}" ] && [ 1 -eq 2 ]
 then
   mkdir "${NBDATA_DIR}"
