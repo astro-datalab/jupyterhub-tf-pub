@@ -21,7 +21,7 @@ then
   rm -rf "${NB_DIR}/notebooks-latest"
 fi
 
-git clone https://github.com/astro-datalab/notebooks-latest.git "${NB_DIR}/notebooks-latest" || exit 1
+git clone --depth 1 https://github.com/astro-datalab/notebooks-latest.git "${NB_DIR}/notebooks-latest" || exit 1
 
 # if supporting repo not present get it from github
 if [ ! -d "$PUB_REPO" ]
@@ -30,7 +30,7 @@ then
 fi
 
 # copy what's needed to the shared directory
-cp -pr ./${PUB_REPO}/scripts ${TGT_DIR}/
+cp -pr ./${PUB_REPO}/scripts ${NB_DIR}/
 
 if [ ! -d "${NBDATA_DIR}" ] && [ 1 -eq 2 ]
 then
