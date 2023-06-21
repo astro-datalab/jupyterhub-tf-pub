@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Note: this script was originally designed for loading the latest notebook
+# information from the notebooks-latest repository. This is no longer being
+# used for that (at the time of writing this), however, This script is generic
+# and can be for other purposes as appropriate. See example below.
+
 # Version: 20230620
 # Author: Chadd Myers <chadd.myers@noirlab.edu>
 #
