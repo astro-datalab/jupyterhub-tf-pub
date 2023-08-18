@@ -13,6 +13,9 @@ then
   mkdir -p /home/${NB_USER}/.datalab
   mkdir -p /home/${NB_USER}/.notebooks
   chmod 777 /home/${NB_USER}/.local
+  chown ${NB_UID}:users /home/${NB_USER}/.local
+  chown ${NB_UID}:users /home/${NB_USER}/.datalab
+  chown ${NB_UID}:users /home/${NB_USER}/.notebooks
 fi
 
 # create symlink to notebooks-latest
@@ -22,8 +25,10 @@ fi
 # the symlink will succeed and became are recursive symlink inside
 # /mnt/shared/notebooks-latest itself.
 ln -sfn /mnt/shared/notebooks-latest /home/${NB_USER}/notebooks-latest
+chown -h ${NB_UID}:users /home/${NB_USER}/notebooks-latest
 
 echo ${UPSTREAM_TOKEN} > /home/${NB_USER}/.datalab/id_token.${NB_USER}
+chown ${NB_UID}:users /home/${NB_USER}/.datalab/id_token.${NB_USER}
 
 read -r -d  '' config<<EOF
 [datalab]
@@ -49,6 +54,7 @@ EOF
 if [ ! -f "/home/${NB_USER}/.datalab/dl.conf" ]
 then
   echo -e "$config" > /home/${NB_USER}/.datalab/dl.conf
+  chown ${NB_UID}:users /home/${NB_USER}/.datalab/dl.conf
 fi
 
 # if .bashrc already exists don't overwrite it
@@ -56,8 +62,10 @@ if [ ! -f "/home/${NB_USER}/.bashrc" ]
 then
   cp -p /mnt/shared/scripts/users_bashrc /home/${NB_USER}/.bashrc
   echo ". ./.bashrc" > /home/${NB_USER}/.profile
+  chown ${NB_UID}:users /home/${NB_USER}/.bashrc
+  chown ${NB_UID}:users /home/${NB_USER}/.profile
 fi
 
 cp -p /mnt/shared/scripts/notebook_container_motd /etc/motd
 
-chown -R ${NB_UID}:users /home/${NB_USER}
+chown ${NB_UID}:users /home/${NB_USER}
