@@ -61,7 +61,7 @@ fi
 if [ ! -f "/home/${NB_USER}/.bashrc" ]
 then
   cp -p /mnt/shared/scripts/users_bashrc /home/${NB_USER}/.bashrc
-  echo ". ./.bashrc" > /home/${NB_USER}/.profile
+  echo '. ~/.bashrc' > /home/${NB_USER}/.profile
   chown ${NB_UID}:users /home/${NB_USER}/.bashrc
   chown ${NB_UID}:users /home/${NB_USER}/.profile
 fi
