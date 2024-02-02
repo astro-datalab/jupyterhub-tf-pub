@@ -27,6 +27,10 @@ fi
 ln -sfn /mnt/shared/notebooks-latest /home/${NB_USER}/notebooks-latest
 chown -h ${NB_UID}:users /home/${NB_USER}/notebooks-latest
 
+# creating symlink for nbdata
+ln -sfn /nbdata /home/${NB_USER}/nbdata
+chown -h ${NB_UID}:users /home/${NB_USER}/nbdata
+
 echo ${UPSTREAM_TOKEN} > /home/${NB_USER}/.datalab/id_token.${NB_USER}
 chown ${NB_UID}:users /home/${NB_USER}/.datalab/id_token.${NB_USER}
 
