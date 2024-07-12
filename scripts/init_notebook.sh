@@ -25,6 +25,7 @@ fi
 # the symlink will succeed and became are recursive symlink inside
 # /mnt/shared/notebooks-latest itself.
 ln -sfn /mnt/shared/notebooks-latest /home/${NB_USER}/notebooks-latest
+ln -sfn /mnt/shared/vospace /home/${NB_USER}/vospace
 chown -h ${NB_UID}:users /home/${NB_USER}/notebooks-latest
 
 echo ${UPSTREAM_TOKEN} > /home/${NB_USER}/.datalab/id_token.${NB_USER}
